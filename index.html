@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Almarized Experience — More Music, Less Noise</title>
+    <meta name="description"
+        content="The Almarized Experience is a premium events and entertainment company offering curated music experiences, private & corporate events, and sound equipment leasing." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter", "ui-sans-serif", "system-ui"],
+                        display: ["Playfair Display", "ui-serif", "Georgia"],
+                    },
+                    colors: {
+                        gold: "#D4AF37",
+                        goldSoft: "#E7CC6A",
+                        ink: "#070707",
+                        ink2: "#0B0B0B",
+                        line: "rgba(212,175,55,0.25)",
+                        glass: "rgba(255,255,255,0.06)",
+                    },
+                    boxShadow: {
+                        glow: "0 0 0 1px rgba(212,175,55,0.25), 0 20px 60px rgba(0,0,0,0.55)",
+                    },
+                    backgroundImage: {
+                        hero:
+                            "radial-gradient(1200px 600px at 15% 10%, rgba(212,175,55,0.18), transparent 55%), radial-gradient(800px 400px at 85% 20%, rgba(255,255,255,0.06), transparent 60%), linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.92))",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        /* subtle animated partner marquee (pauses on hover) */
+        .marquee {
+            --gap: 2rem;
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: var(--gap);
+            mask-image: linear-gradient(to right,
+                    transparent,
+                    black 10%,
+                    black 90%,
+                    transparent);
+        }
+
+        .marquee__track {
+            display: flex;
+            gap: var(--gap);
+            min-width: max-content;
+            animation: scroll 22s linear infinite;
+        }
+
+        .marquee:hover .marquee__track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(calc(-50% - var(--gap) / 2));
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-ink text-white font-sans antialiased">
+    <!-- Top Glow -->
+    <div class="pointer-events-none fixed inset-0 -z-10 bg-hero"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-ink/60 bg-ink/85 border-b border-line">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between py-3">
+                <a href="#top" class="flex items-center gap-3">
+                    <!-- Replace with your logo path -->
+                    <img src="assets/logo-white.png" alt="The Almarized Experience" class="h-10 w-auto"
+                        onerror="this.style.display='none'" />
+                    
+                </a>
+
+                <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+                    <a class="hover:text-white" href="#services">Services</a>
+                    <a class="hover:text-white" href="#about">About</a>
+                    <a class="hover:text-white" href="#experiences">Experiences</a>
+                    <a class="hover:text-white" href="#partners">Partners</a>
+                    <a class="hover:text-white" href="#contact">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="#contact"
+                        class="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium border border-line bg-glass hover:bg-white/10 transition">
+                        Request a Quote
+                        <span class="text-gold">→</span>
+                    </a>
+                    <button
+                        class="md:hidden inline-flex items-center justify-center rounded-full p-2 border border-line bg-glass"
+                        onclick="document.getElementById('mobileNav').classList.toggle('hidden')"
+                        aria-label="Open menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile nav -->
+            <div id="mobileNav" class="hidden md:hidden pb-4">
+                <div class="grid gap-2 text-sm text-white/80">
+                    <a class="py-2 border-b border-line/60" href="#services">Services</a>
+                    <a class="py-2 border-b border-line/60" href="#about">About</a>
+                    <a class="py-2 border-b border-line/60" href="#experiences">Experiences</a>
+                    <a class="py-2 border-b border-line/60" href="#partners">Partners</a>
+                    <a class="py-2" href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="relative">
+        <div class="max-w-6xl mx-auto px-4 pt-12 pb-12 lg:pt-16 lg:pb-16">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6">
+                    <div
+                        class="inline-flex items-center gap-2 rounded-full border border-line bg-glass px-4 py-2 text-xs text-white/80">
+                        <span class="inline-block h-2 w-2 rounded-full bg-gold"></span>
+                        Boutique events & entertainment — curated, premium, intentional
+                    </div>
+
+                    <h1 class="mt-5 font-display text-4xl sm:text-5xl leading-tight">
+                        Elevated Events.
+                        <span class="text-gold">Immersive Music.</span>
+                        Unforgettable Moments.
+                    </h1>
+
+                    <p class="mt-4 text-white/75 text-base sm:text-lg leading-relaxed">
+                        The Almarized Experience is a premium events and entertainment company founded by DJ Alma —
+                        built on one belief: music is not just heard; it’s felt.
+                        We curate experiences for corporate events, private celebrations, and lifestyle gatherings.
+                    </p>
+
+                    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                        <a href="#services"
+                            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold bg-gold text-black hover:bg-goldSoft transition shadow-glow">
+                            Explore Services
+                        </a>
+                        <a href="#contact"
+                            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold border border-line bg-glass hover:bg-white/10 transition">
+                            Request a Quote
+                        </a>
+                    </div>
+
+                    <div class="mt-8 grid grid-cols-3 gap-3 max-w-md">
+                        <div class="rounded-2xl border border-line bg-glass p-4">
+                            <div class="text-gold font-display text-2xl">10+</div>
+                            <div class="text-xs text-white/70">Event formats supported</div>
+                        </div>
+                        <div class="rounded-2xl border border-line bg-glass p-4">
+                            <div class="text-gold font-display text-2xl">Premium</div>
+                            <div class="text-xs text-white/70">Sound & atmosphere</div>
+                        </div>
+                        <div class="rounded-2xl border border-line bg-glass p-4">
+                            <div class="text-gold font-display text-2xl">Curated</div>
+                            <div class="text-xs text-white/70">Talent & experience</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero visuals -->
+                <div class="lg:col-span-6">
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="col-span-7 rounded-3xl overflow-hidden border border-line bg-glass shadow-glow">
+                            <!-- Replace with your professional image -->
+                            <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1400&q=80"
+                                alt="Event ambience" class="h-64 sm:h-72 lg:h-80 w-full object-cover" />
+                        </div>
+                        <div class="col-span-5 grid gap-4">
+                            <div class="rounded-3xl overflow-hidden border border-line bg-glass">
+                                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+                                    alt="DJ performance" class="h-30 sm:h-34 lg:h-38 w-full object-cover" />
+                            </div>
+                            <div class="rounded-3xl overflow-hidden border border-line bg-glass">
+                                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Corporate event" class="h-30 sm:h-34 lg:h-38 w-full object-cover" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 rounded-3xl border border-line bg-glass p-5">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 text-gold">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.29 8.709c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-display text-lg">More Music, Less Noise</div>
+                                <p class="text-sm text-white/70 mt-1">
+                                    We focus on quality over chaos — refined sound, curated energy, and experiences that
+                                    feel personal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Hero visuals -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-14 border-t border-line/60">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-end justify-between gap-6">
+                <div>
+                    <h2 class="font-display text-3xl">Services</h2>
+                    <p class="mt-2 text-white/70 max-w-2xl">
+                        Full-spectrum entertainment and event support — designed to match your audience, venue, and
+                        vibe.
+                    </p>
+                </div>
+                <a href="#contact" class="hidden sm:inline-flex text-sm text-gold hover:text-goldSoft">
+                    Get a custom quote →
+                </a>
+            </div>
+
+            <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Card -->
+                <div class="rounded-3xl border border-line bg-glass p-6 hover:bg-white/10 transition">
+                    <div class="text-gold font-semibold">Corporate Events</div>
+                    <div class="mt-2 text-white/75 text-sm leading-relaxed">
+                        Product launches, brand activations, retreats, conferences, and end-year celebrations —
+                        delivered with polish.
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-line bg-glass p-6 hover:bg-white/10 transition">
+                    <div class="text-gold font-semibold">Weddings & Traditional Events</div>
+                    <div class="mt-2 text-white/75 text-sm leading-relaxed">
+                        Elegant music curation, seamless flow, and sound that carries emotion — from ceremony to
+                        dancefloor.
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-line bg-glass p-6 hover:bg-white/10 transition">
+                    <div class="text-gold font-semibold">Birthday & Private Parties</div>
+                    <div class="mt-2 text-white/75 text-sm leading-relaxed">
+                        Curated sets, clean transitions, and the right energy for your guests — intimate or high-energy.
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-line bg-glass p-6 hover:bg-white/10 transition">
+                    <div class="text-gold font-semibold">Custom Experiences</div>
+                    <div class="mt-2 text-white/75 text-sm leading-relaxed">
+                        Unique concepts tailored to your vision — from themed nights to premium destination-style
+                        events.
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-line bg-glass p-6 hover:bg-white/10 transition">
+                    <div class="text-gold font-semibold">Sound & Equipment Leasing</div>
+                    <div class="mt-2 text-white/75 text-sm leading-relaxed">
+                        High-quality sound systems and technical support for events of all sizes.
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-line bg-glass p-6 hover:bg-white/10 transition">
+                    <div class="text-gold font-semibold">Entertainment Curation</div>
+                    <div class="mt-2 text-white/75 text-sm leading-relaxed">
+                        Talent selection that matches your audience and brand — premium DJs, MCs, and experience flow.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-14">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5">
+                    <h2 class="font-display text-3xl">About</h2>
+                    <p class="mt-3 text-white/70 leading-relaxed">
+                        The Almarized Experience is a boutique events and entertainment company founded by DJ Alma —
+                        blending music, atmosphere, and storytelling into moments that feel intentional and
+                        unforgettable.
+                    </p>
+                    <div class="mt-6 rounded-3xl border border-line bg-glass p-6">
+                        <div class="font-display text-xl">
+                            Built for the audience that values <span class="text-gold">taste</span>, <span
+                                class="text-gold">energy</span>, and <span class="text-gold">detail</span>.
+                        </div>
+                        <p class="mt-2 text-sm text-white/70">
+                            Quality over chaos. Connection over crowds. Experiences that linger long after the last
+                            track fades.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div class="rounded-3xl border border-line bg-glass p-6">
+                            <div class="text-gold font-semibold">Our Philosophy</div>
+                            <p class="mt-2 text-sm text-white/75">
+                                <span class="font-medium">More Music, Less Noise</span> — refined sound, curated
+                                moments, and a premium experience.
+                            </p>
+                        </div>
+                        <div class="rounded-3xl border border-line bg-glass p-6">
+                            <div class="text-gold font-semibold">What We Care About</div>
+                            <p class="mt-2 text-sm text-white/75">
+                                Atmosphere, pacing, and the emotional arc of your event — from arrival to the last song.
+                            </p>
+                        </div>
+                        <div class="rounded-3xl border border-line bg-glass p-6">
+                            <div class="text-gold font-semibold">How We Work</div>
+                            <p class="mt-2 text-sm text-white/75">
+                                We listen first, then design. Every event is tailored to your audience, venue, and
+                                objectives.
+                            </p>
+                        </div>
+                        <div class="rounded-3xl border border-line bg-glass p-6">
+                            <div class="text-gold font-semibold">The Result</div>
+                            <p class="mt-2 text-sm text-white/75">
+                                Clean delivery, memorable moments, and a dancefloor that feels earned — not forced.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences -->
+    <section id="experiences" class="py-14 border-t border-line/60">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-end justify-between gap-6">
+                <div>
+                    <h2 class="font-display text-3xl">Signature Experience</h2>
+                    <p class="mt-2 text-white/70 max-w-2xl">
+                        A glimpse into the type of curated lifestyle experiences we create.
+                    </p>
+                </div>
+                <a href="#contact" class="hidden sm:inline-flex text-sm text-gold hover:text-goldSoft">
+                    Enquire about a custom experience →
+                </a>
+            </div>
+
+            <div class="mt-8 grid lg:grid-cols-12 gap-6 items-stretch">
+                <div class="lg:col-span-5 rounded-3xl overflow-hidden border border-line bg-glass">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1400&q=80"
+                        alt="Hidden Gem" class="h-64 lg:h-full w-full object-cover" />
+                </div>
+
+                <div class="lg:col-span-7 rounded-3xl border border-line bg-glass p-7">
+                    <div
+                        class="inline-flex items-center gap-2 text-xs text-white/80 border border-line bg-black/20 rounded-full px-4 py-2">
+                        <span class="text-gold">★</span> Hidden Gem Series
+                    </div>
+                    <h3 class="mt-4 font-display text-2xl">
+                        Food. Travel. Music. <span class="text-gold">Curated escapes</span> with meaning.
+                    </h3>
+
+                    <p class="mt-3 text-white/75 leading-relaxed">
+                        Hidden Gem is a curated lifestyle event series that brings together food, travel and music in
+                        unique locations.
+                        Each edition is designed as a premium escape — great cuisine, elegant spaces, and DJs delivering
+                        immersive musical experiences.
+                    </p>
+
+                    <ul class="mt-5 grid sm:grid-cols-2 gap-3 text-sm text-white/75">
+                        <li class="flex gap-2">
+                            <span class="text-gold">•</span> Discover unique venues & cultures
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-gold">•</span> Curated entertainment & flow
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-gold">•</span> Unwind, network, and dance
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-gold">•</span> Premium accommodation options
+                        </li>
+                    </ul>
+
+                    <div class="mt-6 rounded-2xl border border-line/70 bg-black/20 p-5">
+                        <div class="text-sm text-white/75">
+                            <span class="text-gold font-medium">PS:</span> Don’t forget to tag along your plus one.
+                            <span class="text-gold font-medium">#SiriNiNumbers</span> — the more the merrier.
+                            We’re ready to <span class="text-gold font-medium">#SeeYouOnTheDanceFloor</span>.
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                        <a href="#contact"
+                            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold bg-gold text-black hover:bg-goldSoft transition">
+                            Enquire About Hidden Gem
+                        </a>
+                        <a href="#contact"
+                            class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold border border-line bg-glass hover:bg-white/10 transition">
+                            Propose a Custom Experience
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section class="py-14">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-end justify-between gap-6">
+                <div>
+                    <h2 class="font-display text-3xl">Gallery Preview</h2>
+                    <p class="mt-2 text-white/70 max-w-2xl">
+                        A few moments from past experiences. (We’ll expand this in the full website.)
+                    </p>
+                </div>
+                <a href="#contact" class="hidden sm:inline-flex text-sm text-gold hover:text-goldSoft">
+                    Ask for our media kit →
+                </a>
+            </div>
+
+            <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="rounded-3xl overflow-hidden border border-line bg-glass">
+                    <img class="h-44 w-full object-cover"
+                        src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80"
+                        alt="Gallery 1" />
+                </div>
+                <div class="rounded-3xl overflow-hidden border border-line bg-glass">
+                    <img class="h-44 w-full object-cover"
+                        src="https://images.unsplash.com/photo-1515165562835-c4c3b1fbb2a5?auto=format&fit=crop&w=1200&q=80"
+                        alt="Gallery 2" />
+                </div>
+                <div class="rounded-3xl overflow-hidden border border-line bg-glass">
+                    <img class="h-44 w-full object-cover"
+                        src="https://images.unsplash.com/photo-1485872299829-c673f5194813?auto=format&fit=crop&w=1200&q=80"
+                        alt="Gallery 3" />
+                </div>
+                <div class="rounded-3xl overflow-hidden border border-line bg-glass">
+                    <img class="h-44 w-full object-cover"
+                        src="https://images.unsplash.com/photo-1521334726092-b509a19597c1?auto=format&fit=crop&w=1200&q=80"
+                        alt="Gallery 4" />
+                </div>
+            </div>
+
+            <div
+                class="mt-6 rounded-3xl border border-line bg-glass p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                    <div class="font-display text-xl">Want visuals like this for your event?</div>
+                    <div class="text-sm text-white/70 mt-1">We can recommend media partners or coordinate a full
+                        experience package.</div>
+                </div>
+                <a href="#contact"
+                    class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold border border-line bg-black/20 hover:bg-white/10 transition">
+                    Talk to Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section id="partners" class="py-14 border-t border-line/60">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="font-display text-3xl">Partners</h2>
+            <p class="mt-2 text-white/70 max-w-2xl">
+                Brands, venues, and collaborators we’ve worked with. (Add logos anytime — it will keep scrolling
+                automatically.)
+            </p>
+
+            <div class="mt-8 rounded-3xl border border-line bg-glass p-5">
+                <div class="marquee">
+                    <!-- Duplicate track for seamless loop -->
+                    <div class="marquee__track">
+                        <!-- Replace these placeholders with your partner logos (SVG/PNG). Keep same classes. -->
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+
+                        <!-- second half duplicates -->
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                        <div
+                            class="h-14 w-44 rounded-2xl border border-line bg-black/20 flex items-center justify-center text-white/70 text-sm">
+                            Partner Logo</div>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-xs text-white/60">
+                    Tip: swap each “Partner Logo” box with an <code class="text-white/80">img</code> tag and keep the
+                    same sizing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Quote -->
+    <section id="contact" class="py-14">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5">
+                    <h2 class="font-display text-3xl">Request a Quote</h2>
+                    <p class="mt-2 text-white/70 leading-relaxed">
+                        Tell us what you’re planning. We’ll respond with a tailored quote and a suggested flow that
+                        matches your audience and budget.
+                    </p>
+
+                    <div class="mt-6 rounded-3xl border border-line bg-glass p-6">
+                        <div class="text-gold font-semibold">Quick Notes</div>
+                        <ul class="mt-2 text-sm text-white/75 space-y-2">
+                            <li class="flex gap-2"><span class="text-gold">•</span> Corporate / Wedding / Birthday /
+                                Private Party / Custom Experience</li>
+                            <li class="flex gap-2"><span class="text-gold">•</span> Sound equipment leasing available
+                            </li>
+                            <li class="flex gap-2"><span class="text-gold">•</span> Premium curation for music and flow
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <!-- Static form linked to Formspree. -->
+                    <form id="quoteForm" class="rounded-3xl border border-line bg-glass p-7" action="https://formspree.io/f/maqdqqgb"
+                        method="POST">
+                        <!-- Formspree recommendations -->
+                        <input type="hidden" name="_subject" value="New quote request — The Almarized Experience" />
+                        <input type="hidden" name="_redirect" value="/thank-you.html" />
+                    
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm text-white/80">Full Name</label>
+                                <input
+                                    class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold"
+                                    name="name" placeholder="Your name" required autocomplete="name" />
+                            </div>
+                    
+                            <div>
+                                <label class="text-sm text-white/80">Email</label>
+                                <!-- Use _replyto so your email client reply works nicely -->
+                                <input type="email"
+                                    class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold"
+                                    name="_replyto" placeholder="you@example.com" required autocomplete="email" />
+                            </div>
+                    
+                            <div>
+                                <label class="text-sm text-white/80">Event Type</label>
+                                <select
+                                    class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold"
+                                    name="event_type">
+                                    <option>Corporate Event</option>
+                                    <option>Wedding / Traditional Wedding</option>
+                                    <option>Birthday Party</option>
+                                    <option>Private Party</option>
+                                    <option>Custom Experience (e.g., Hidden Gem)</option>
+                                    <option>Sound & Equipment Leasing</option>
+                                </select>
+                            </div>
+                    
+                            <div>
+                                <label class="text-sm text-white/80">Event Date</label>
+                                <input type="date"
+                                    class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold"
+                                    name="event_date" />
+                            </div>
+                    
+                            <div class="sm:col-span-2">
+                                <label class="text-sm text-white/80">Location / Venue</label>
+                                <input
+                                    class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold"
+                                    name="location" placeholder="City, venue name (if known)" autocomplete="off" />
+                            </div>
+                    
+                            <div class="sm:col-span-2">
+                                <label class="text-sm text-white/80">Details</label>
+                                <textarea
+                                    class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold min-h-[120px]"
+                                    name="message"
+                                    placeholder="Tell us about your audience, timing, and what you want the vibe to feel like."></textarea>
+                            </div>
+                    
+                            <!-- Anti-spam Quiz -->
+                            <div class="sm:col-span-2">
+                                <div class="rounded-2xl border border-line bg-black/20 p-4">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                                        <div class="text-sm text-white/80">
+                                            Anti-spam check:
+                                            <span class="text-white/70">What is</span>
+                                            <span class="font-semibold text-gold" id="quizA">3</span>
+                                            <span class="text-white/70">+</span>
+                                            <span class="font-semibold text-gold" id="quizB">4</span>
+                                            <span class="text-white/70">?</span>
+                                        </div>
+                    
+                                        <div class="flex items-center gap-3">
+                                            <input id="quizAnswer" type="number" inputmode="numeric"
+                                                class="w-36 rounded-2xl bg-black/30 border border-line px-4 py-2 text-sm outline-none focus:border-gold"
+                                                placeholder="Answer" aria-label="Anti-spam answer" required />
+                                            <button type="button" id="newQuizBtn"
+                                                class="rounded-full px-4 py-2 text-xs font-semibold border border-line bg-glass hover:bg-white/10 transition">
+                                                New question
+                                            </button>
+                                        </div>
+                                    </div>
+                    
+                                    <div id="quizHint" class="mt-2 text-xs text-white/60">
+                                        Please answer correctly to enable submission.
+                                    </div>
+                    
+                                    <!-- This hidden input gets submitted to Formspree -->
+                                    <input type="hidden" id="quizToken" name="quiz_token" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                            <button id="submitBtn" type="submit" disabled
+                                class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold bg-gold text-black hover:bg-goldSoft transition shadow-glow disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gold">
+                                Send Request
+                            </button>
+                    
+                            <div class="text-xs text-white/60">
+                                Prefer WhatsApp/Call? See contact details below.
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-line/60">
+        <div class="max-w-6xl mx-auto px-4 py-10">
+            <div class="grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5">
+                    <div class="font-display text-2xl">The Almarized Experience</div>
+                    <div class="mt-2 text-white/70">
+                        Premium events & entertainment. Curated music-led experiences. <span class="text-gold">More
+                            Music, Less Noise.</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3">
+                    <div class="text-gold font-semibold">Contact</div>
+                    <div class="mt-2 text-sm text-white/75 space-y-2">
+                        <div>Phone: <a class="hover:text-white" href="tel:+254732320876">+254 732 320 876</a></div>
+                        <div>Phone: <a class="hover:text-white" href="tel:+254717295800">+254 717 295 800</a></div>
+                        <div>Email: <a class="hover:text-white"
+                                href="mailto:djalmabookings@gmail.com">djalmabookings@gmail.com</a></div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4">
+                    <div class="text-gold font-semibold">Social</div>
+                    <div class="mt-2 grid grid-cols-2 gap-2 text-sm text-white/75">
+                        <a class="rounded-2xl border border-line bg-glass px-4 py-2 hover:bg-white/10 transition"
+                            href="#" target="_blank" rel="noreferrer">Instagram</a>
+                        <a class="rounded-2xl border border-line bg-glass px-4 py-2 hover:bg-white/10 transition"
+                            href="#" target="_blank" rel="noreferrer">TikTok</a>
+                        <a class="rounded-2xl border border-line bg-glass px-4 py-2 hover:bg-white/10 transition"
+                            href="#" target="_blank" rel="noreferrer">YouTube</a>
+                        <a class="rounded-2xl border border-line bg-glass px-4 py-2 hover:bg-white/10 transition"
+                            href="#" target="_blank" rel="noreferrer">hearthis.at</a>
+                    </div>
+                    <div class="mt-3 text-xs text-white/60">
+                        Add more links anytime (Spotify, SoundCloud, Mixcloud, etc.).
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-white/50">
+                <div>© <span id="year"></span> The Almarized Experience. All rights reserved.</div>
+                <div class="text-white/50">
+                    Built with <span class="text-gold">taste</span> — Black • Gold • White
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+            (function () {
+                const quizAEl = document.getElementById("quizA");
+                const quizBEl = document.getElementById("quizB");
+                const quizAnswerEl = document.getElementById("quizAnswer");
+                const quizHintEl = document.getElementById("quizHint");
+                const submitBtn = document.getElementById("submitBtn");
+                const newQuizBtn = document.getElementById("newQuizBtn");
+                const quizTokenEl = document.getElementById("quizToken");
+                const formEl = document.getElementById("quoteForm");
+
+                let a = 0;
+                let b = 0;
+
+                function randInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
+                function setState(isValid) {
+                    submitBtn.disabled = !isValid;
+                    if (isValid) {
+                        quizHintEl.textContent = "✅ Great — you can submit the form now.";
+                        quizHintEl.className = "mt-2 text-xs text-gold";
+                    } else {
+                        quizHintEl.textContent = "Please answer correctly to enable submission.";
+                        quizHintEl.className = "mt-2 text-xs text-white/60";
+                    }
+                }
+
+                function newQuiz() {
+                    a = randInt(2, 9);
+                    b = randInt(1, 9);
+                    quizAEl.textContent = a;
+                    quizBEl.textContent = b;
+
+                    quizAnswerEl.value = "";
+                    quizAnswerEl.setAttribute("aria-invalid", "false");
+
+                    // simple token to record what was asked (not security, just logging)
+                    quizTokenEl.value = `sum:${a}+${b}`;
+                    setState(false);
+                }
+
+                function validate() {
+                    const val = Number(quizAnswerEl.value);
+                    const ok = Number.isFinite(val) && val === a + b;
+
+                    quizAnswerEl.setAttribute("aria-invalid", ok ? "false" : "true");
+                    if (!ok && quizAnswerEl.value !== "") {
+                        quizHintEl.textContent = "❌ Not quite — try again or generate a new question.";
+                        quizHintEl.className = "mt-2 text-xs text-white/70";
+                    }
+                    setState(ok);
+                    return ok;
+                }
+
+                newQuiz();
+                newQuizBtn.addEventListener("click", newQuiz);
+                quizAnswerEl.addEventListener("input", validate);
+
+                // Hard stop on submit if quiz isn't valid
+                formEl.addEventListener("submit", function (e) {
+                    if (!validate()) {
+                        e.preventDefault();
+                        quizAnswerEl.focus();
+                    }
+                });
+            })();
+        </script>
+    </footer>
+</body>
+
+</html>

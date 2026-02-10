@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You — The Almarized Experience</title>
+    <meta name="description" content="Thank you for reaching out. We’ll get back to you soon." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter", "ui-sans-serif", "system-ui"],
+                        display: ["Playfair Display", "ui-serif", "Georgia"],
+                    },
+                    colors: {
+                        gold: "#D4AF37",
+                        goldSoft: "#E7CC6A",
+                        ink: "#070707",
+                        line: "rgba(212,175,55,0.25)",
+                        glass: "rgba(255,255,255,0.06)",
+                    },
+                    boxShadow: {
+                        glow: "0 0 0 1px rgba(212,175,55,0.25), 0 20px 60px rgba(0,0,0,0.55)",
+                    },
+                    backgroundImage: {
+                        hero:
+                            "radial-gradient(1200px 600px at 15% 10%, rgba(212,175,55,0.18), transparent 55%), radial-gradient(800px 400px at 85% 20%, rgba(255,255,255,0.06), transparent 60%), linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.97))",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-ink text-white font-sans antialiased">
+    <div class="pointer-events-none fixed inset-0 -z-10 bg-hero"></div>
+
+    <main class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-xl w-full">
+            <div class="rounded-3xl border border-line bg-glass p-8 shadow-glow">
+                <div
+                    class="inline-flex items-center gap-2 rounded-full border border-line bg-black/20 px-4 py-2 text-xs text-white/80">
+                    <span class="inline-block h-2 w-2 rounded-full bg-gold"></span>
+                    The Almarized Experience
+                </div>
+
+                <h1 class="mt-5 font-display text-3xl sm:text-4xl leading-tight">
+                    Thank you — we’ve received your request.
+                </h1>
+
+                <p class="mt-3 text-white/75 leading-relaxed">
+                    We’ll get back to you shortly with a tailored quote and next steps.
+                    If your event is urgent, feel free to reach us directly via phone or WhatsApp.
+                </p>
+
+                <div class="mt-6 grid sm:grid-cols-2 gap-3">
+                    <a href="/"
+                        class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold bg-gold text-black hover:bg-goldSoft transition shadow-glow">
+                        Back to Home
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold border border-line bg-glass hover:bg-white/10 transition"
+                        onclick="window.history.back(); return false;">
+                        Make another request
+                    </a>
+                </div>
+
+                <div class="mt-7 pt-6 border-t border-line/60 text-xs text-white/60">
+                    More Music, Less Noise.
+                </div>
+            </div>
+
+            <div class="mt-6 text-center text-xs text-white/50">
+                © <span id="year"></span> The Almarized Experience
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
