@@ -46,6 +46,10 @@
     </script>
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* subtle animated partner marquee (pauses on hover) */
         .marquee {
             --gap: 2rem;
@@ -92,7 +96,6 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex items-center justify-between py-3">
                 <a href="#top" class="flex items-center gap-3">
-                    <!-- Replace with your logo path -->
                     <img src="assets/logo-white.png" alt="The Almarized Experience" class="h-10 w-auto"
                         onerror="this.style.display='none'" />
                     
@@ -192,7 +195,6 @@
                 <div class="lg:col-span-6">
                     <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-7 rounded-3xl overflow-hidden border border-line bg-glass shadow-glow">
-                            <!-- Replace with your professional image -->
                             <img src="/assets/party.avif"
                                 alt="Event ambience" class="h-64 sm:h-72 lg:h-80 w-full object-cover" />
                         </div>
@@ -493,7 +495,6 @@
 
             <div class="mt-8 rounded-3xl border border-line bg-glass p-5">
                 <div class="marquee">
-                    <!-- Duplicate track for seamless loop -->
                     <div class="marquee__track">
                         
                         <div
@@ -579,11 +580,17 @@
 
                 <div class="lg:col-span-7">
                     <!-- Static form linked to Formspree. -->
-                    <form id="quoteForm" class="rounded-3xl border border-line bg-glass p-7" action="https://formspree.io/f/maqdqqgb"
+                    <form id="quoteForm" class="rounded-3xl border border-line bg-glass p-7" action="https://formspree.io/f/xxxyyzus"
                         method="POST">
-                        <!-- Formspree recommendations -->
+                        
                         <input type="hidden" name="_subject" value="New quote request — The Almarized Experience" />
                         <input type="hidden" name="_redirect" value="/thank-you.html" />
+                    
+                        <!-- Honeypot  -->
+                        <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+                            <label>Leave this field empty</label>
+                            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+                        </div>
                     
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div>
@@ -595,7 +602,6 @@
                     
                             <div>
                                 <label class="text-sm text-white/80">Email</label>
-                                <!-- Use _replyto so your email client reply works nicely -->
                                 <input type="email"
                                     class="mt-2 w-full rounded-2xl bg-black/30 border border-line px-4 py-3 text-sm outline-none focus:border-gold"
                                     name="_replyto" placeholder="you@example.com" required autocomplete="email" />
@@ -665,7 +671,6 @@
                                         Please answer correctly to enable submission.
                                     </div>
                     
-                                    <!-- This hidden input gets submitted to Formspree -->
                                     <input type="hidden" id="quizToken" name="quiz_token" value="" />
                                 </div>
                             </div>
@@ -737,72 +742,71 @@
         <script>
             document.getElementById("year").textContent = new Date().getFullYear();
             (function () {
-                const quizAEl = document.getElementById("quizA");
-                const quizBEl = document.getElementById("quizB");
-                const quizAnswerEl = document.getElementById("quizAnswer");
-                const quizHintEl = document.getElementById("quizHint");
-                const submitBtn = document.getElementById("submitBtn");
-                const newQuizBtn = document.getElementById("newQuizBtn");
-                const quizTokenEl = document.getElementById("quizToken");
-                const formEl = document.getElementById("quoteForm");
+                    const quizAEl = document.getElementById("quizA");
+                    const quizBEl = document.getElementById("quizB");
+                    const quizAnswerEl = document.getElementById("quizAnswer");
+                    const quizHintEl = document.getElementById("quizHint");
+                    const submitBtn = document.getElementById("submitBtn");
+                    const newQuizBtn = document.getElementById("newQuizBtn");
+                    const quizTokenEl = document.getElementById("quizToken");
+                    const formEl = document.getElementById("quoteForm");
 
-                let a = 0;
-                let b = 0;
+                    let a = 0;
+                    let b = 0;
 
-                function randInt(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-                }
-
-                function setState(isValid) {
-                    submitBtn.disabled = !isValid;
-                    if (isValid) {
-                        quizHintEl.textContent = "✅ Great — you can submit the form now.";
-                        quizHintEl.className = "mt-2 text-xs text-gold";
-                    } else {
-                        quizHintEl.textContent = "Please answer correctly to enable submission.";
-                        quizHintEl.className = "mt-2 text-xs text-white/60";
+                    function randInt(min, max) {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
                     }
-                }
 
-                function newQuiz() {
-                    a = randInt(2, 9);
-                    b = randInt(1, 9);
-                    quizAEl.textContent = a;
-                    quizBEl.textContent = b;
-
-                    quizAnswerEl.value = "";
-                    quizAnswerEl.setAttribute("aria-invalid", "false");
-
-                    // simple token to record what was asked (not security, just logging)
-                    quizTokenEl.value = `sum:${a}+${b}`;
-                    setState(false);
-                }
-
-                function validate() {
-                    const val = Number(quizAnswerEl.value);
-                    const ok = Number.isFinite(val) && val === a + b;
-
-                    quizAnswerEl.setAttribute("aria-invalid", ok ? "false" : "true");
-                    if (!ok && quizAnswerEl.value !== "") {
-                        quizHintEl.textContent = "❌ Not quite — try again or generate a new question.";
-                        quizHintEl.className = "mt-2 text-xs text-white/70";
+                    function setState(isValid) {
+                        submitBtn.disabled = !isValid;
+                        if (isValid) {
+                            quizHintEl.textContent = "✅ Great — you can submit the form now.";
+                            quizHintEl.className = "mt-2 text-xs text-gold";
+                        } else {
+                            quizHintEl.textContent = "Please answer correctly to enable submission.";
+                            quizHintEl.className = "mt-2 text-xs text-white/60";
+                        }
                     }
-                    setState(ok);
-                    return ok;
-                }
 
-                newQuiz();
-                newQuizBtn.addEventListener("click", newQuiz);
-                quizAnswerEl.addEventListener("input", validate);
+                    function newQuiz() {
+                        a = randInt(2, 9);
+                        b = randInt(1, 9);
+                        quizAEl.textContent = a;
+                        quizBEl.textContent = b;
 
-                // Hard stop on submit if quiz isn't valid
-                formEl.addEventListener("submit", function (e) {
-                    if (!validate()) {
-                        e.preventDefault();
-                        quizAnswerEl.focus();
+                        quizAnswerEl.value = "";
+                        quizAnswerEl.setAttribute("aria-invalid", "false");
+
+                        quizTokenEl.value = `sum:${a}+${b}`;
+                        setState(false);
                     }
-                });
-            })();
+
+                    function validateQuiz() {
+                        const val = Number(quizAnswerEl.value);
+                        const ok = Number.isFinite(val) && val === a + b;
+
+                        quizAnswerEl.setAttribute("aria-invalid", ok ? "false" : "true");
+                        if (!ok && quizAnswerEl.value !== "") {
+                            quizHintEl.textContent = "❌ Not quite — try again or generate a new question.";
+                            quizHintEl.className = "mt-2 text-xs text-white/70";
+                        }
+                        setState(ok);
+                        return ok;
+                    }
+
+                    newQuiz();
+                    newQuizBtn.addEventListener("click", newQuiz);
+                    quizAnswerEl.addEventListener("input", validateQuiz);
+
+                    // Stop submit if quiz isn't valid
+                    formEl.addEventListener("submit", function (e) {
+                        if (!validateQuiz()) {
+                            e.preventDefault();
+                            quizAnswerEl.focus();
+                        }
+                    });
+                })();
         </script>
     </footer>
 </body>
